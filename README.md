@@ -21,34 +21,6 @@ Build libass for Android.
 * make sure you hav `perl`
 * install `autopoint`
 * install `ninja-build`
-
-### autogen
-```
-cd ./src/unibreak && ./autogen.sh
-cd ./src/fribidi && ./autogen.sh
-cd ./src/fontconfig && ./autogen.sh
-cd ./src/expat/expat && ./buildconf.sh
-cd ./src/ass && ./autogen.sh
-```
-
-### add ass cmake to CMakeList.txt 
-```
-cmake_minimum_required(VERSION 3.22.1)
-
-# add ass cmake folder
-add_subdirectory(libass-cmake)
-
-project("libass")
-include_directories(${CMAKE_BINARY_DIR}/include)
-add_library(${CMAKE_PROJECT_NAME} SHARED native-lib.c)
-# add target dependence
-add_dependencies(${CMAKE_PROJECT_NAME} ep_ass)
-target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_BINARY_DIR}/include)
-target_link_directories(${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_BINARY_DIR}/lib)
-# add .a lib to project
-target_link_libraries(${CMAKE_PROJECT_NAME}
-        "-Wl,--whole-archive" ass fribidi freetyped harfbuzz unibreak png "-Wl,--no-whole-archive"
-        android
-        z
-        log)
-```
+* install androidNDK
+### Run .sh
+Run build_android.sh and merge_android_libs.sh
