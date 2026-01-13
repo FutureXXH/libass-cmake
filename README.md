@@ -14,7 +14,6 @@ Build libass for Android.
 ## how to use
 
 ### clone and init
-`git clone --recurse-submodules https://github.com/peerless2012/libass-cmake.git ./src/main/cpp`
 
 ### prepare
 * make sure you have `libtool`
